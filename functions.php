@@ -28,11 +28,11 @@ function includeHeader($loggedin=true) {
     }
     
     // Ensure that the header file exists
-    (!file_exists("styles/{$style}/header.php") || !file_exists("styles/{$style}/headerdata.php")) ? die("Error: The requested style is missing. Please inform your system administrator.");
+    if (!file_exists("styles/{$style}/header.php") || !file_exists("styles/{$style}/headerdata.php")) die("Error: The requested style is missing. Please inform your system administrator.");
     
     // Include the header file/s
     require("styles/{$style}/headerdata.php");
-    ($loggedin == true) ? require("styles/{$style}/header.php");
+    if ($loggedin == true) require("styles/{$style}/header.php");
     
 }
 
@@ -53,7 +53,7 @@ function includeFooter($loggedin=true) {
     if (!file_exists("styles/{$style}/footer.php")) die("Error: The requested style is missing. Please inform your system administrator.");
     
     // Include the header file/s
-    ($loggedin == true) ? require("styles/{$style}/footer.php");
+    if ($loggedin == true) require("styles/{$style}/footer.php");
     
 }
 
