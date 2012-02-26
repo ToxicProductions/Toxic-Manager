@@ -29,10 +29,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $_SESSION['maindomain'] = $row['maindomain'];
         
         // Detect the user's default style and set it
-        if (file_exists("{$row['style']}/")) {
+        if (file_exists("styles/{$row['style']}/style.css")) {
             $_SESSION['style'] = $row['style'];
         }else{
-            $_SESSION['style'] = $config['defaultstyle'];
+            $_SESSION['style'] = $config['style'];
         }
         
         // Generate and register the session
@@ -62,6 +62,19 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <table class="login" align="center"><tr><td>
         
         <h2>Toxic Manager Login</h2>
+        
+        <?php
+        if ($_GET['e'] == 'suspended') {
+            echo '<div class="error">Your account is currently suspended. Please contact your administrator for more information.</div>';
+        }elseif ($_GET['e'] == 'incorrect') {
+            echo '<div class="error">The username and password combination you entered is incorrect.</div>';
+        }elseif ($_GET['e'] == 'session') {
+            echo '<div class="error">An incorrect session ID was received. To protect from hacking, you have been automatically logged out.</div>';
+        }elseif (isset($_GET['logout'])) {
+            session_destroy();
+            echo '<div class="success">You have been successfully logged out. Thank you for using Toxic Manager!</div>';
+        }
+        ?>
         
         <form method="post" action="login.php">
             <table class="fields" align="center">
