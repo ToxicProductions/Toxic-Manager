@@ -64,13 +64,17 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         <h2>Toxic Manager Login</h2>
         
         <?php
-        if ($_GET['e'] == 'suspended') {
-            echo '<div class="error">Your account is currently suspended. Please contact your administrator for more information.</div>';
-        }elseif ($_GET['e'] == 'incorrect') {
-            echo '<div class="error">The username and password combination you entered is incorrect.</div>';
-        }elseif ($_GET['e'] == 'session') {
-            echo '<div class="error">An incorrect session ID was received. To protect from hacking, you have been automatically logged out.</div>';
-        }elseif (isset($_GET['logout'])) {
+        if (isset($_GET['e'])) {
+            if ($_GET['e'] == 'suspended') {
+                echo '<div class="error">Your account is currently suspended. Please contact your administrator for more information.</div>';
+            }elseif ($_GET['e'] == 'incorrect') {
+                echo '<div class="error">The username and password combination you entered is incorrect.</div>';
+            }elseif ($_GET['e'] == 'session') {
+                echo '<div class="error">An incorrect session ID was received. To protect from hacking, you have been automatically logged out.</div>';
+            }
+        }
+        
+        if (isset($_GET['logout'])) {
             session_destroy();
             echo '<div class="success">You have been successfully logged out. Thank you for using Toxic Manager!</div>';
         }
