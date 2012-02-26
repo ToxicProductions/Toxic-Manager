@@ -61,7 +61,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     
     <table class="login" align="center"><tr><td>
         
-        <h2>Toxic-Manager Login</h2>
+        <h2>Toxic Manager Login</h2>
         
         <form method="post" action="login.php">
             <table class="fields" align="center">

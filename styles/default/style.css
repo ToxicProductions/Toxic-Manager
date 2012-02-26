@@ -3,15 +3,22 @@ body {
 }
 
 .login {
-    background-color:#fff;
+    background-color:#eee;
     border-style:solid;
     border-width:1px;
     border-color:#333;
     border-radius:18px;
     -moz-border-radius:18px;
     -webkit-border-radius:18px;
-    width:360px;
-    margin-top:300px;
+    width:420px;
+    margin-top:220px;
+    padding:9px;
+    text-align:center;
+    font-family:Century Gothic, Trebuchet MS, Arial;
+}
+
+.login .fields {
+    font-family:Century Gothic, Trebuchet MS, Arial;
 }
 
 .header {
