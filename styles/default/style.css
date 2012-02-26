@@ -15,10 +15,18 @@ body {
     padding:9px;
     text-align:center;
     font-family:Century Gothic, Trebuchet MS, Arial;
+    -moz-box-shadow: 0 0 5px 5px #aaa;
+    -webkit-box-shadow: 0 0 5px 5px #aaa;
+    box-shadow: 0 0 5px 5px #aaa;
 }
+
+.login .error, .login .success { font-size:14px; margin-bottom:6px; font-weight:bold; }
+.login .error { color:red; }
+.login .success { color:green; }
 
 .login .fields {
     font-family:Century Gothic, Trebuchet MS, Arial;
+    font-size:14px;
 }
 
 .header {
