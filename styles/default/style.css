@@ -32,7 +32,7 @@ body {
 .header {
     width:920px;
     height:60px;
-    background-image:url('styles/default/images/headerbg.png');
+    background-image:url('images/headerbg.png');
     background-repeat:repeat-x;
     border-style:solid;
     border-width:1px;
@@ -45,4 +45,5 @@ body {
     -webkit-border-top-right-radius:18px;
     font-family:Century Gothic, Trebuchet MS, Arial;
     color:#fff;
+    padding:6px;
 }
