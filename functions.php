@@ -17,27 +17,48 @@ $db = new PDO("mysql:host={$config['dbhost']};dbname={$config['dbname']};port={$
 
 // Function to check the user's session exists
 function checkSession($requiredlevel=null) {
+    
+    // Get the database connection
+    global $db;
+    
+    // If a session already exists
     if (isset($_SESSION['username']) && isset($_SESSION['id'])) {
+        
+        // Search the database for the session
         $session = $db->prepare("SELECT * FROM `sessions` WHERE id=? AND username=?;");
         $session->execute(array($_SESSION['id'], $_SESSION['username']));
+        
+        // If a session doesn't exist
         if ($session->fetchColumn() != 0) {
+            
+            // Redirect to invalid session and login page
             header("location:login.php?e=session");
             die();
+            
         }else{
+            
+            // Or get the user information from the database
             global $user;
             $user = $db->prepare("SELECT * FROM `clients` WHERE username=?");
             $user->execute(array($_SESSION['username']));
             $user = $user->fetch();
+            
+            // If a specific user level was requested, verify it is matched
             if ($requiredlevel != null) {
                 if (strtolower($user['type']) != strtolower($requiredlevel)) {
                     header("location:403.php");
                     die();
                 }
             }
+            
         }
+        
     }else{
+        
+        // No session was found, so redirect to the login page
         header("location:login.php");
         die();
+        
     }
 }
     
