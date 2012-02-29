@@ -71,6 +71,7 @@ body {
 .main .navbar {
     width:290px;
     padding:0px;
+    vertical-align:top;
 }
 
 .main .navbar .navbuttons {
@@ -89,6 +90,10 @@ body {
     cursor:pointer;
 }
 
+.main .navbar .navbuttons td div {
+    padding:8px;
+}
+
 .main .navbar .navbuttons td a:link, .main .navbar .navbuttons td a:visited {
     color:#fff;
     text-decoration:none;
@@ -98,6 +103,7 @@ body {
     padding:16px;
     font-family:Helvetica Neue, Century Gothic, Trebuchet MS, Arial;
     font-weight:lighter;
+    vertical-align:top;
 }
 
 .main .content h1 {

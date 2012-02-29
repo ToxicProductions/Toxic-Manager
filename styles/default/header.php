@@ -10,7 +10,7 @@
         foreach($config['pages'] as $page) {
             if ((isset($page[2]) && $user['type'] == 'admin') || (!isset($page[2]))) {
                 echo "<tr><td onclick=\"window.location='{$page[1]}'\">";
-                echo "<a href=\"{$page[1]}\">{$page[0]}</a>";
+                echo "<div><a href=\"{$page[1]}\">{$page[0]}</a></div>";
                 echo "</td></tr>";
             }
         }
