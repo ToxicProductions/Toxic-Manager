@@ -67,7 +67,7 @@ function checkSession($requiredlevel=null) {
 function includeHeader($loggedin=true) {
     
     // Get the configuration
-    global $config;
+    global $config,$user;
     
     // Detect the requested style
     if (isset($_GET['style'])) {
