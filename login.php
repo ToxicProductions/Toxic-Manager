@@ -98,8 +98,4 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     </td></tr></table>
     
     <?php
-
-    // Include the page footer
-    includeFooter(false);
-    
 }

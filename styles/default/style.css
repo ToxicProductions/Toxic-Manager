@@ -43,7 +43,53 @@ body {
     -moz-border-top-right-radius:18px;
     -webkit-border-top-left-radius:18px;
     -webkit-border-top-right-radius:18px;
-    font-family:Century Gothic, Trebuchet MS, Arial;
+    font-family:Helvetica Neue, Century Gothic, Trebuchet MS, Arial;
+    font-weight:lighter;
     color:#fff;
     padding:6px;
+}
+
+.options {
+    text-align:right;
+}
+
+.options a:link, .options a:visited {
+    color:#ddd;
+    text-decoration:none;
+}
+
+.options a:hover {
+    color:#fff;
+    text-decoration:underline;
+}
+
+.main {
+    width:920px;
+}
+
+.main .navbar {
+    width:290px;
+    padding:0px;
+}
+
+.main .navbar td {
+    width:100%;
+    height:32px;
+    background-image:url('images/tabbg.png');
+    font-family:Helvetica Neue, Century Gothic, Trebuchet MS, Arial;
+    color:#fff;
+    padding:6px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+.main .content {
+    padding:16px;
+    font-family:Helvetica Neue, Century Gothic, Trebuchet MS, Arial;
+    font-weight:lighter;
+}
+
+.main .content h1 {
+    font-weight:bold !important;
+    font-size:28px;
 }
