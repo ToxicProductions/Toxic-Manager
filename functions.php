@@ -143,4 +143,14 @@ function createHash($pass) {
     return md5(sha1(sha1(md5(sha1(md5(md5(md5(sha1(sha1(md5(sha1(md5(md5(sha1(md5(sha1(md5(sha1(sha1(sha1(md5(md5(sha1(md5(sha1($pass))))))))))))))))))))))))));
 }
 
+// Function to generate an 'a' based on the input - very simple function
+function avowel($in) {
+    $vowels = array('a', 'e', 'i', 'o', 'u');
+    if (in_array(strtolower($in[0]), $vowels)) {
+        return "an {$in}";
+    }else{
+        return "a {$in}";
+    }
+}
+
 ?>

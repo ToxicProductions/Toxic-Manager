@@ -69,7 +69,7 @@ body {
 }
 
 .main .navbar {
-    width:290px;
+    width:260px;
     padding:0px;
     vertical-align:top;
 }
@@ -109,4 +109,8 @@ body {
 .main .content h1 {
     font-weight:bold !important;
     font-size:28px;
+}
+
+.main .content table {
+    font-family:Helvetica Neue, Century Gothic, Trebuchet MS, Arial;
 }

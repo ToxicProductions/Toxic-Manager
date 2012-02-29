@@ -1,4 +1,8 @@
 <?php
+	require('functions.php');
+	checkSession();
+	includeHeader();
+	
 	function array_clean($arr,$use_keys=false){
 		if(!is_array($arr)){
 			return false;
@@ -53,4 +57,6 @@
 	//echo($_SERVER['SERVER_SIGNATURE']);
 	//phpinfo();
 	echo("Memory: <ul><li>Total - {$totalmem}MB</li><li>Used - {$usedmem}MB</li><li>Free - {$freemem}MB</li><li>Percent used - $graphicalmem ($percentmem%)</li></ul>Swap: <ul><li>Total - {$totalswap}MB</li><li>Used - {$usedswap}MB</li><li>Free - {$freeswap}MB</li><li>Percent used - $graphicalswap ($percentswap%)</li></ul>Information: <ul><li>Server Load - {$load[0]} {$load[1]} {$load[2]}</li><li>Uptime - $uptime</li></ul>");
+
+	includeFooter();
 ?>
