@@ -64,6 +64,34 @@ function checkSession($requiredlevel=null) {
     
 
 // Function to get the style header
+function getFiles($dir){
+	if($dir == "/.."){
+		$dir = "/";
+	}
+	$files = glob($dir."/.*");
+	foreach($files as $file){
+		$file = str_replace($dir,"",$file);
+		if($file != "."){
+			if(is_dir($dir.$file)){
+				echo("<a href='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'>".$file."</a><br />");
+			}else{
+				echo("$file<br />");
+			}
+		}
+	}
+	$files = glob($dir."/*");
+	foreach($files as $file){
+		$file = str_replace($dir,"",$file);
+		$filestr = str_replace("/","",$file);
+		if($file != "." && $file != "/."){
+			if(is_dir($dir.$file)){
+				echo("<a href='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'>".$filestr."</a><br />");
+			}else{
+				echo("$filestr<br />");
+			}
+		}
+	}
+}
 function includeHeader($loggedin=true) {
     
     // Get the configuration
