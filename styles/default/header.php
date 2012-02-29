@@ -3,9 +3,9 @@
     <td class="options">Welcome back, <?=$_SESSION['username']?>! <a href=\"login.php?logout=1\">Logout</a></td>
 </tr></table>
 
-<table class="main" align="center"><tr>
+<table class="main" align="center" cellspacing="0"><tr>
     <td class="navbar">
-        <table class="navbuttons">
+        <table class="navbuttons" cellspacing="0">
         <?php
         foreach($config['pages'] as $page) {
             if ((isset($page[2]) && $user['type'] == 'admin') || (!isset($page[2]))) {

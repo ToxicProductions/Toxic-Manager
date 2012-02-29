@@ -65,6 +65,7 @@ body {
 
 .main {
     width:920px;
+    background-color:#fff;
 }
 
 .main .navbar {
@@ -72,15 +73,25 @@ body {
     padding:0px;
 }
 
-.main .navbar td {
+.main .navbar .navbuttons {
+    padding:0px;
+    width:100%;
+}
+
+.main .navbar .navbuttons td {
     width:100%;
     height:32px;
     background-image:url('images/tabbg.png');
     font-family:Helvetica Neue, Century Gothic, Trebuchet MS, Arial;
     color:#fff;
-    padding:6px;
+    padding:0px;
     vertical-align:middle;
     cursor:pointer;
+}
+
+.main .navbar .navbuttons td a:link, .main .navbar .navbuttons td a:visited {
+    color:#fff;
+    text-decoration:none;
 }
 
 .main .content {
