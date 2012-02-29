@@ -27,6 +27,7 @@ function checkSession($requiredlevel=null) {
             global $user;
             $user = $db->prepare("SELECT * FROM `clients` WHERE username=?");
             $user->execute(array($_SESSION['username']));
+            $user->fetch();
             if ($requiredlevel != null) {
                 if (strtolower($user['type']) != strtolower($requiredlevel)) {
                     header("location:403.php");
