@@ -70,7 +70,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             }elseif ($_GET['e'] == 'incorrect') {
                 echo '<div class="error">The username and password combination you entered is incorrect.</div>';
             }elseif ($_GET['e'] == 'session') {
-                echo '<div class="error">An incorrect session ID was received. To protect from hacking, you have been automatically logged out.</div>';
+                echo '<div class="error">Your session timed out or was tampered with. As a security precaution, please login again.</div>';
             }
         }
         
