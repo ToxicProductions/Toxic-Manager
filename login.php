@@ -17,7 +17,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         // Retrieve more information about the client
         $row = $db->prepare("SELECT * FROM clients WHERE username=? AND password=?");
         $row->execute(array($_POST['username'], createHash($_POST['password'])));
-        $row->fetch();
+        $row = $row->fetch();
         
         // Check if the user is suspended
         if ($row['status'] == 'suspended') {
