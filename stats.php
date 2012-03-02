@@ -32,7 +32,7 @@
 	$totalmem = $mem[1];
 	$usedmem = $mem[2];
 	$freemem = $mem[3];
-	$percentmem = ceil(($totalmem-$freemem) * 100 / $freemem);
+	$percentmem = ceil(($usedmem/$totalmem) * 100);
 	if($percentmem == 0){
 		$percentmem = "0";
 	}
@@ -40,7 +40,7 @@
 	$totalswap = $swap[1];
 	$usedswap = $swap[2];
 	$freeswap = $swap[3];
-	$percentswap = ceil(($freeswap - $totalswap) * 100 / $totalswap);
+	$percentswap = ceil(($usedswap/$totalswap) * 100);
 	if($percentswap == 0){
 		$percentswap = "0";
 	}
