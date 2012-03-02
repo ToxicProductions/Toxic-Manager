@@ -65,6 +65,7 @@ function checkSession($requiredlevel=null) {
 
 // Function to get the style header
 function getFiles($dir){
+	echo '<table width="100%" border="0">';
 	if($dir == "/.."){
 		$dir = "/";
 	}
@@ -72,11 +73,23 @@ function getFiles($dir){
 	foreach($files as $file){
 		$file = str_replace($dir,"",$file);
 		if($file != "."){
+			echo '<tr>';
 			if(is_dir($dir.$file)){
-				echo("<a href='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'>".$file."</a><br />");
+				echo("<td><a href='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'>".$file."</a></td>");
 			}else{
-				echo("$file<br />");
+				echo("<td>$file</td>");
 			}
+			
+			echo("<td style=\"width:75%;\">");
+			echo("<a href=\"fileaction.php?type=rename&path={$dir}{$file}\" class=\"button\">Rename</a>");
+			echo("<a href=\"fileaction.php?type=move&path={$dir}{$file}\" class=\"button\">Move</a>");
+			echo("<a href=\"fileaction.php?type=copy&path={$dir}{$file}\" class=\"button\">Copy</a>");
+			echo("<a href=\"fileaction.php?type=delete&path={$dir}{$file}\" class=\"button\">Delete</a>");
+			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=editcode&path={$dir}{$file}\" class=\"button\">Edit Code</a>");
+			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=wysiwyg&path={$dir}{$file}\" class=\"button\">HTML Editor</a>");
+			echo("</td>");
+			
+			echo '</tr>';
 		}
 	}
 	$files = glob($dir."/*");
@@ -84,13 +97,26 @@ function getFiles($dir){
 		$file = str_replace($dir,"",$file);
 		$filestr = str_replace("/","",$file);
 		if($file != "." && $file != "/."){
+			echo '<tr>';
 			if(is_dir($dir.$file)){
-				echo("<a href='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'>".$filestr."</a><br />");
+				echo("<td><a href='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'>".$filestr."</a></td>");
 			}else{
-				echo("$filestr<br />");
+				echo("<td>$filestr</td>");
 			}
+			
+			echo("<td style=\"width:75%;\">");
+			echo("<a href=\"fileaction.php?type=rename&path={$dir}{$file}\" class=\"button\">Rename</a>");
+			echo("<a href=\"fileaction.php?type=move&path={$dir}{$file}\" class=\"button\">Move</a>");
+			echo("<a href=\"fileaction.php?type=copy&path={$dir}{$file}\" class=\"button\">Copy</a>");
+			echo("<a href=\"fileaction.php?type=delete&path={$dir}{$file}\" class=\"button\">Delete</a>");
+			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=editcode&path={$dir}{$file}\" class=\"button\">Edit Code</a>");
+			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=wysiwyg&path={$dir}{$file}\" class=\"button\">HTML Editor</a>");
+			echo("</td>");
+			
+			echo '</tr>';
 		}
 	}
+	echo '</table>';
 }
 function includeHeader($loggedin=true) {
     
