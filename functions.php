@@ -75,8 +75,10 @@ function getFiles($dir){
 		if($file != "."){
 			echo '<tr>';
 			if(is_dir($dir.$file)){
+				echo("<td width=\"24\"><img src=\"styles/".style()."/images/directoryicon.png\"></td>");
 				echo("<td><a href='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'>".$file."</a></td>");
 			}else{
+				echo("<td width=\"24\"><img src=\"styles/".style()."/images/fileicon.png\"></td>");
 				echo("<td>$file</td>");
 			}
 			
@@ -99,8 +101,10 @@ function getFiles($dir){
 		if($file != "." && $file != "/."){
 			echo '<tr>';
 			if(is_dir($dir.$file)){
+				echo("<td width=\"24\"><img src=\"styles/".style()."/images/directoryicon.png\"></td>");
 				echo("<td><a href='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'>".$filestr."</a></td>");
 			}else{
+				echo("<td width=\"24\"><img src=\"styles/".style()."/images/fileicon.png\"></td>");
 				echo("<td>$filestr</td>");
 			}
 			
@@ -123,21 +127,12 @@ function includeHeader($loggedin=true) {
     // Get the configuration
     global $config,$user;
     
-    // Detect the requested style
-    if (isset($_GET['style'])) {
-        $style = $_GET['style'];
-    }elseif (isset($_SESSION['style'])) {
-        $style = $_SESSION['style'];
-    }else{
-        $style = $config['style'];
-    }
-    
     // Ensure that the header file exists
-    if (!file_exists("styles/{$style}/header.php") || !file_exists("styles/{$style}/headerdata.php")) die("Error: The requested style is missing. Please inform your system administrator.");
+    if (!file_exists("styles/".style()."/header.php") || !file_exists("styles/".style()."/headerdata.php")) die("Error: The requested style is missing. Please inform your system administrator.");
     
     // Include the header file/s
-    require("styles/{$style}/headerdata.php");
-    if ($loggedin == true) require("styles/{$style}/header.php");
+    require("styles/".style()."/headerdata.php");
+    if ($loggedin == true) require("styles/".style()."/header.php");
     
 }
 
@@ -147,21 +142,24 @@ function includeFooter($loggedin=true) {
     // Get the configuration
     global $config;
     
-    // Detect the requested style
-    if (isset($_GET['style'])) {
-        $style = $_GET['style'];
-    }elseif (isset($_SESSION['style'])) {
-        $style = $_SESSION['style'];
-    }else{
-        $style = $config['style'];
-    }
-    
     // Ensure that the header file exists
-    if (!file_exists("styles/{$style}/footer.php")) die("Error: The requested style is missing. Please inform your system administrator.");
+    if (!file_exists("styles/".style()."/footer.php")) die("Error: The requested style is missing. Please inform your system administrator.");
     
     // Include the header file/s
-    if ($loggedin == true) require("styles/{$style}/footer.php");
+    if ($loggedin == true) require("styles/".style()."/footer.php");
     
+}
+
+// Function to get the style name
+function style() {
+    global $config;
+    if (isset($_GET['style'])) {
+        return $_GET['style'];
+    }elseif (isset($_SESSION['style'])) {
+        return $_SESSION['style'];
+    }else{
+        return $config['style'];
+    }
 }
 
 // Function to generate password hash
