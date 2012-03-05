@@ -65,30 +65,32 @@ function checkSession($requiredlevel=null) {
 
 // Function to get the style header
 function getFiles($dir){
-	echo '<table width="100%" border="0">';
+	echo '<table width="100%" border="0" cellspacing="0" class="selection">';
 	if($dir == "/.."){
 		$dir = "/";
 	}
 	$files = glob($dir."/.*");
 	foreach($files as $file){
-		$file = str_replace($dir,"",$file);
+		$dir1 = $dir."/";
+		$file = str_replace($dir1,"",$file);
+		$file = str_replace(array("/..","/."),array("..",""),$file);
 		if($file != "."){
 			echo '<tr>';
-			if(is_dir($dir.$file)){
-				echo("<td width=\"24\"><img src=\"styles/".style()."/images/directoryicon.png\"></td>");
-				echo("<td><a href='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'>".$file."</a></td>");
+			if(is_dir($dir."/".$file)){
+				echo("<td width=\"25\" style=\"cursor:pointer;\" onclick=\"window.location='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'\"><img src=\"styles/".style()."/images/directoryicon.png\"></td>");
+				echo("<td style=\"cursor:pointer;\" onclick=\"window.location='{$_SERVER['PHP_SELF']}?path={$dir}/{$file}'\"><a href='{$_SERVER['PHP_SELF']}?path={$dir}/{$file}'>".$file."</a></td>");
 			}else{
-				echo("<td width=\"24\"><img src=\"styles/".style()."/images/fileicon.png\"></td>");
+				echo("<td width=\"25\"><img src=\"styles/".style()."/images/fileicon.png\"></td>");
 				echo("<td>$file</td>");
 			}
 			
-			echo("<td style=\"width:75%;\">");
-			echo("<a href=\"fileaction.php?type=rename&path={$dir}{$file}\" class=\"button\">Rename</a>");
-			echo("<a href=\"fileaction.php?type=move&path={$dir}{$file}\" class=\"button\">Move</a>");
-			echo("<a href=\"fileaction.php?type=copy&path={$dir}{$file}\" class=\"button\">Copy</a>");
-			echo("<a href=\"fileaction.php?type=delete&path={$dir}{$file}\" class=\"button\">Delete</a>");
-			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=editcode&path={$dir}{$file}\" class=\"button\">Edit Code</a>");
-			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=wysiwyg&path={$dir}{$file}\" class=\"button\">HTML Editor</a>");
+			echo("<td style=\"width:65%; text-align:right;\">");
+			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=editcode&path={$dir}/{$file}\" class=\"button\">Edit Code</a>");
+			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=wysiwyg&path={$dir}/{$file}\" class=\"button\">HTML Editor</a>");
+			echo("<a href=\"fileaction.php?type=rename&path={$dir}/{$file}\" class=\"button\">Rename</a>");
+			echo("<a href=\"fileaction.php?type=move&path={$dir}/{$file}\" class=\"button\">Move</a>");
+			echo("<a href=\"fileaction.php?type=copy&path={$dir}/{$file}\" class=\"button\">Copy</a>");
+			echo("<a href=\"fileaction.php?type=delete&path={$dir}/{$file}\" class=\"button\">Delete</a>");
 			echo("</td>");
 			
 			echo '</tr>';
@@ -101,20 +103,20 @@ function getFiles($dir){
 		if($file != "." && $file != "/."){
 			echo '<tr>';
 			if(is_dir($dir.$file)){
-				echo("<td width=\"24\"><img src=\"styles/".style()."/images/directoryicon.png\"></td>");
-				echo("<td><a href='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'>".$filestr."</a></td>");
+				echo("<td width=\"25\" style=\"cursor:pointer;\" onclick=\"window.location='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'\"><img src=\"styles/".style()."/images/directoryicon.png\"></td>");
+				echo("<td style=\"cursor:pointer;\" onclick=\"window.location='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'\"><a href='{$_SERVER['PHP_SELF']}?path={$dir}{$file}'>".$filestr."</a></td>");
 			}else{
-				echo("<td width=\"24\"><img src=\"styles/".style()."/images/fileicon.png\"></td>");
+				echo("<td width=\"25\"><img src=\"styles/".style()."/images/fileicon.png\"></td>");
 				echo("<td>$filestr</td>");
 			}
 			
-			echo("<td style=\"width:75%;\">");
+			echo("<td style=\"width:65%; text-align:right;\">");
+			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=editcode&path={$dir}{$file}\" class=\"button\">Edit Code</a>");
+			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=wysiwyg&path={$dir}{$file}\" class=\"button\">HTML Editor</a>");
 			echo("<a href=\"fileaction.php?type=rename&path={$dir}{$file}\" class=\"button\">Rename</a>");
 			echo("<a href=\"fileaction.php?type=move&path={$dir}{$file}\" class=\"button\">Move</a>");
 			echo("<a href=\"fileaction.php?type=copy&path={$dir}{$file}\" class=\"button\">Copy</a>");
 			echo("<a href=\"fileaction.php?type=delete&path={$dir}{$file}\" class=\"button\">Delete</a>");
-			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=editcode&path={$dir}{$file}\" class=\"button\">Edit Code</a>");
-			if(!is_dir($dir.$file)) echo("<a href=\"fileaction.php?type=wysiwyg&path={$dir}{$file}\" class=\"button\">HTML Editor</a>");
 			echo("</td>");
 			
 			echo '</tr>';

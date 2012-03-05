@@ -2,10 +2,18 @@
 require('functions.php');
 checkSession();
 includeHeader();
+
+if (isset($_GET['path'])) {
+    $path = $_GET['path'];
+}elseif (file_exists("/home/{$_SESSION['username']}")) {
+    $path = "/home/{$_SESSION['username']}";
+}else{
+    $path = "/";
+}
 ?>
 
-<h1>File Manager - <?php echo((isset($_GET['path'])) ? $_GET['path'] : "/"); ?></h1><br />
+<h1>File Manager - <?=$path?></h1><br />
 <?php
-getFiles((isset($_GET['path'])) ? $_GET['path'] : "/");
+getFiles($path);
 includeFooter();
 ?>
